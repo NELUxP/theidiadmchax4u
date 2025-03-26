@@ -1,0 +1,429 @@
+@import url('https://fonts.cdnfonts.com/css/minecraftia');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 98%; /* Clean white background */
+    --foreground: 0 0% 20%; /* Dark text */
+    --card: 0 0% 100%; /* Pure white cards */
+    --card-foreground: 0 0% 20%; /* Dark text */
+    --popover: 0 0% 100%; /* White popover */
+    --popover-foreground: 0 0% 20%; /* Dark text */
+    --primary: 200 85% 45%; /* Minecraft Bedrock blue */
+    --primary-foreground: 0 0% 100%; /* White text */
+    --secondary: 0 0% 96%; /* Light gray */
+    --secondary-foreground: 0 0% 20%; /* Dark text */
+    --muted: 0 0% 92%; /* Lighter gray */
+    --muted-foreground: 0 0% 40%; /* Medium gray text */
+    --accent: 200 85% 45%; /* Minecraft Bedrock blue */
+    --accent-foreground: 0 0% 100%; /* White text */
+    --destructive: 0 85% 60%; /* Bright red */
+    --destructive-foreground: 0 0% 100%; /* White text */
+    --border: 0 0% 90%; /* Light border */
+    --input: 0 0% 96%; /* Light input background */
+    --ring: 200 85% 45%; /* Minecraft Bedrock blue */
+    --radius: 0.5rem; /* Slightly rounded corners like Bedrock UI */
+  }
+.div {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+  .dark {
+    --background: 0 0% 10%; /* Dark background */
+    --foreground: 0 0% 98%; /* Light text */
+    --card: 0 0% 15%; /* Dark cards */
+    --card-foreground: 0 0% 98%; /* Light text */
+    --popover: 0 0% 15%; /* Dark popover */
+    --popover-foreground: 0 0% 98%; /* Light text */
+    --primary: 200 85% 45%; /* Minecraft Bedrock blue */
+    --primary-foreground: 0 0% 100%; /* White text */
+    --secondary: 0 0% 20%; /* Darker gray */
+    --secondary-foreground: 0 0% 98%; /* Light text */
+    --muted: 0 0% 25%; /* Dark muted */
+    --muted-foreground: 0 0% 80%; /* Light muted text */
+    --accent: 200 85% 45%; /* Minecraft Bedrock blue */
+    --accent-foreground: 0 0% 100%; /* White text */
+    --destructive: 0 85% 60%; /* Bright red */
+    --destructive-foreground: 0 0% 100%; /* White text */
+    --border: 0 0% 30%; /* Dark border */
+    --input: 0 0% 20%; /* Dark input background */
+    --ring: 200 85% 45%; /* Minecraft Bedrock blue */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  h1 {
+    @apply text-4xl font-bold tracking-tight;
+  }
+  h2 {
+    @apply text-3xl font-semibold tracking-tight;
+  }
+  h3 {
+    @apply text-2xl font-semibold tracking-tight;
+  }
+}
+
+/* Minecraft Bedrock specific styles */
+body {
+  font-family: 'Minecraftia', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: none; /* Disable antialiasing for a pixelated effect */
+  -moz-osx-font-smoothing: none; /* Disable antialiasing for a pixelated effect */
+  background-color: #6b6b6b; /* Gray background similar to Minecraft's UI */
+  color: #ffffff; /* White text color */
+  line-height: 1.8; /* Tight line height for a compact, blocky feel */
+
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+.mc-button-green {
+  background-color: #3e8e2f;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.mc-button-green:hover {
+  background-color: #2d6922;
+}
+@layer components {
+  .mc-button {
+    @apply px-4 py-2 border-2 border-black relative;
+    @apply shadow-[inset_-2px_-4px_0_rgba(0,0,0,0.3)];
+    @apply hover:shadow-[inset_-2px_-4px_0_rgba(0,0,0,0.5)];
+    @apply active:translate-y-[2px];
+    @apply transition-all duration-100;
+    image-rendering: pixelated;
+  }
+
+  .mc-button-green {
+    @apply mc-button;
+    @apply bg-[#3e8e2f];
+    @apply text-white;
+    @apply hover:bg-[#2d6922];
+   
+  }
+
+  .mc-button-gray {
+    @apply mc-button;
+    @apply bg-[#c6c6c6];
+    @apply text-black;
+    @apply hover:bg-[#a0a0a0];
+  }
+
+  .mc-input {
+    @apply px-3 py-2;
+    @apply border-2 border-black;
+    @apply bg-[#c6c6c6];
+    @apply text-black;
+    @apply focus:outline-none focus:ring-2 focus:ring-[#3e8e2f];
+    image-rendering: pixelated;
+  }
+  
+  .mc-panel {
+    @apply border-2 border-black;
+    @apply bg-[#2d2d2d];
+    @apply p-4;
+    @apply shadow-[inset_-2px_-4px_0_rgba(0,0,0,0.3)];
+    image-rendering: pixelated;
+  }
+
+  .mc-navbar {
+    @apply bg-[#2d2d2d];
+    @apply border-b-2 border-black;
+  }
+
+  .mc-navbar-button {
+    @apply px-4 py-2;
+    @apply border-2 border-black;
+    @apply bg-[#3e8e2f];
+    @apply text-white;
+    @apply hover:bg-[#2d6922];
+    @apply shadow-[inset_-2px_-4px_0_rgba(0,0,0,0.3)];
+    @apply hover:shadow-[inset_-2px_-4px_0_rgba(0,0,0,0.5)];
+    @apply active:translate-y-[2px];
+    @apply transition-all duration-100;
+    image-rendering: pixelated;
+
+  }
+
+  .minecraft-font {
+    font-family: "Minecraftia", sans-serif;
+  }
+
+  
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 5s ease infinite;
+  }
+
+}
+
+/* Typewriter container */
+.typewriter {
+  width: 100%;
+  max-width: 100%;
+  min-height: 120px; /* Adjust based on your content */
+  margin: 1rem 0;
+  position: relative;
+}
+
+/* Typewriter text styling */
+.typewriter-text {
+  color: #fff;
+  font-family: 'Press Start 2P', cursive; /* Minecraft-style font */
+  font-size: 1rem;
+  line-height: 1.6;
+  text-shadow: 2px 2px 0 #3F3F3F;
+  white-space: pre-wrap; /* Preserve line breaks */
+  overflow: hidden;
+  border-right: 4px solid #FFD700; /* Gold cursor to match Minecraft */
+  display: inline-block;
+}
+
+/* Animation for typing */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* Animation for cursor blinking */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #FFD700 }
+}
+
+/* Dynamic typing effect - applied via JavaScript */
+.typing-active {
+  animation: 
+    typing 4s steps(40, end),
+    blink-caret 0.75s step-end infinite;
+}
+
+/* For multi-line content */
+.typewriter-line {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0 0 1rem 0;
+  animation: 
+    typing 3s steps(70, end),
+    blink-caret 0.75s step-end infinite;
+}
+
+.typewriter-line:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive adjustments for portrait devices */
+@media (max-width: 600px) {
+  .typewriter h1 {
+    font-size: 1.5rem; /* Adjust font size for smaller screens */
+    white-space: normal; /* Allow text to wrap on small screens */
+    animation: none; /* Disable animation on small screens if needed */
+    border-right: none; /* Remove cursor on small screens if needed */
+  }
+}
+
+main  {
+  background: linear-gradient(145deg, #3e8e2f, #2d6922); /* Green gradient */
+  border: 2px solid #000; /* Thick black border */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 8px 8px 0 #000; /* Blocky shadow */
+}
+
+/* Minecraft-style button for icons */
+.mc-button-icon {
+  display: inline-block;
+  padding: 8px;
+  background-color: #8b8b8b;
+  border: 2px solid #000;
+  border-radius: 4px;
+  box-shadow: 2px 2px 0 #000;
+  transition: all 0.2s ease;
+}
+
+.mc-button-icon:hover {
+  background-color: #3e8e2f;
+  transform: translateY(-2px);
+  box-shadow: 3px 3px 0 #000;
+}
+
+/* Minecraft-style text */
+.mc-text {
+  color: #fff;
+  text-shadow: 2px 2px 0 #000;
+}
+
+/* Footer background */
+footer {
+  background-color: #2d2d2d;
+  border-top: 4px solid #000;
+}
+
+
+.minecraft-ui-container {
+  border: 4px solid #4a3b2a;
+  background: #4a3b2a;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}
+
+.minecraft-header {
+  background: #8b6b4a;
+  border-bottom: 4px solid #6d5a45;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.minecraft-title {
+  color: #ffd83d;
+  font-size: 1.25rem;
+  text-shadow: 2px 2px 0 #3f3f3f;
+  letter-spacing: 1px;
+}
+
+.minecraft-window-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.minecraft-btn {
+  width: 16px;
+  height: 16px;
+  border: 2px solid;
+  border-radius: 50%;
+}
+
+.minecraft-btn.red {
+  background: #ff5555;
+  border-color: #ff0000;
+}
+
+.minecraft-btn.yellow {
+  background: #ffff55;
+  border-color: #ffff00;
+}
+
+.minecraft-btn.green {
+  background: #55ff55;
+  border-color: #55ff00;
+}
+
+.minecraft-content-area {
+  background: #8b6b4a;
+  padding: 20px;
+}
+
+.minecraft-section {
+  background: #5e4b32;
+  border: 4px solid #6d5a45;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.minecraft-section-title {
+  color: #ffd83d;
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.minecraft-icon {
+  font-size: 1.2rem;
+}
+
+.minecraft-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 20px;
+  background: #ffd83d;
+  margin-left: 4px;
+  transition: opacity 0.1s;
+}
+
+.minecraft-text {
+  color: #e0e0e0;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.minecraft-feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.minecraft-feature-item {
+  color: #e0e0e0;
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.minecraft-feature-icon {
+  font-size: 1.1rem;
+}
+
+.minecraft-download-btn {
+  background: #3b8520;
+  color: white;
+  border: 2px solid #2c6416;
+  border-radius: 4px;
+  padding: 12px 24px;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 0 #000;
+  box-shadow: inset 0 4px #6bc349, inset 0 -4px #2a5a00, 0 4px rgba(0,0,0,0.25);
+  transition: all 0.1s;
+}
+
+.minecraft-download-btn:hover {
+  background: #4a9c2b;
+  transform: translateY(-2px);
+}
+
+.minecraft-download-btn:active {
+  transform: translateY(1px);
+  box-shadow: inset 0 2px #6bc349, inset 0 -2px #2a5a00, 0 2px rgba(0,0,0,0.25);
+}
+
+.minecraft-footer {
+  background: #8b6b4a;
+  border-top: 4px solid #6d5a45;
+  padding: 8px 16px;
+  display: flex;
+  justify-content: space-between;
+  color: #ffd83d;
+  font-size: 0.75rem;
+}
