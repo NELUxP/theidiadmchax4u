@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Youtube, Github, Mail } from "lucide-react";
 import { AuthProvider } from "@/components/auth-provider";
 import { ProfilePopover } from "@/components/profile-popover";
+import { GoogleTagManager, GoogleTagManagerNoscript } from "@/components/GoogleTag";
 
 export const metadata: Metadata = {
   title: "MCHAX4U",
@@ -69,7 +70,7 @@ export const metadata: Metadata = {
       url: "favicon.png", // Replace with your actual custom icon path
     },
   },
-  manifest: "/site.webmanifest", // Replace with your actual manifest file path
+  manifest: "/site.webmanifest"
 };
 
 export default function RootLayout({
@@ -79,7 +80,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* Place GoogleTagManager here in the head */}
+        <GoogleTagManager />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.youtube.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://github.com" crossOrigin="anonymous" />
+      </head>
       <body>
+      <GoogleTagManagerNoscript />
         <AuthProvider>
           <div className="min-h-screen flex flex-col bg-[#3e8e2f]">
             <header className="mc-navbar py-2 text-center rounded-b-lg p-6">
