@@ -2,7 +2,7 @@
 
 import type React from "react"
 import { createContext, useContext, useEffect, useState } from "react"
-import { supabase } from "@/lib/supabase"
+import supabase from "@/lib/supabase";
 import type { Session, User } from "@supabase/supabase-js"
 
 type AuthContextType = {

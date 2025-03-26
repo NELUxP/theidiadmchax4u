@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { supabase } from "@/lib/supabase";
+import supabase from "@/lib/supabase";
 import { Session } from "@supabase/supabase-js";
 import Image from "next/image";
 import { Download, ChevronDown, ChevronUp, GitCommit, Calendar, CheckCircle } from "lucide-react";
@@ -140,7 +140,7 @@ export default function DownloadPage() {
   }
 
   return (
-    <div className="min-h-[calc(100vh-120px)] bg-[url('/images/dirt-background.png')] bg-repeat bg-[length:200px] p-4 flex items-center justify-center">
+    <div className="min-h-[calc(100vh-120px)] p-4 flex items-center justify-center">
       {/* Main Container */}
       <div className="w-full max-w-6xl border-4 border-[#4a3b2a] bg-[#4a3b2a] rounded-lg overflow-hidden shadow-lg">
         

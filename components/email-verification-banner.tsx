@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { useAuth } from "@/components/auth-provider"
-import { supabase } from "@/lib/supabase"
+import supabase from "@/lib/supabase";
 
 export function EmailVerificationBanner() {
   const { user, refreshSession } = useAuth()

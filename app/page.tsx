@@ -72,7 +72,7 @@ export default function Home() {
   }, [displayText, currentPhraseIndex, isDeleting, phrases])
 
   return (
-    <div className="min-h-[calc(100vh-120px)] bg-[url('/images/dirt-background.png')] bg-repeat bg-[length:200px] p-4 flex items-center justify-center">
+    <div className="min-h-[calc(100vh-120px)] p-4 flex items-center justify-center">
       {/* Main container with Minecraft UI style */}
       <div className="w-full max-w-6xl border-4 border-[#4a3b2a] bg-[#4a3b2a] rounded-lg overflow-hidden shadow-lg">
         {/* Top bar like Minecraft inventory */}
