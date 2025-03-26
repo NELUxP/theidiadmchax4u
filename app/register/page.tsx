@@ -14,32 +14,63 @@ export default function RegisterPage() {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [passwordRequirements, setPasswordRequirements] = useState({
+    length: false,
+    uppercase: false,
+    lowercase: false,
+    number: false,
+    specialChar: false,
+    match: false
+  });
   const { signUp } = useAuth();
   const router = useRouter();
+
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    setPassword(val);
+    
+    setPasswordRequirements({
+      ...passwordRequirements,
+      length: val.length >= 8,
+      uppercase: /[A-Z]/.test(val),
+      lowercase: /[a-z]/.test(val),
+      number: /\d/.test(val),
+      specialChar: /[!@#$%^&*(),.?":{}|<>]/.test(val)
+    });
+  };
+
+  const handleConfirmPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    setConfirmPassword(val);
+    setPasswordRequirements({
+      ...passwordRequirements,
+      match: password === val
+    });
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setError(null);
 
-    // Validate username (no spaces)
     if (username.includes(" ")) {
       setError("Username cannot contain spaces");
       setIsLoading(false);
       return;
     }
 
-    // Validate password
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
-    if (!passwordRegex.test(password)) {
-      setError(
-        "Password must be at least 6 characters long and include at least one uppercase letter, one lowercase letter, and one digit."
-      );
+    if (!passwordRequirements.length || 
+        !passwordRequirements.uppercase || 
+        !passwordRequirements.lowercase || 
+        !passwordRequirements.number || 
+        !passwordRequirements.specialChar) {
+      setError("Password does not meet requirements");
       setIsLoading(false);
       return;
     }
 
-    // Confirm password match
     if (password !== confirmPassword) {
       setError("Passwords do not match");
       setIsLoading(false);
@@ -108,7 +139,7 @@ export default function RegisterPage() {
               onChange={(e) => setUsername(e.target.value)}
               required
               className="w-full mc-input"
-              pattern="^\S+$" // Ensures no spaces
+              pattern="^\S+$"
               title="Username cannot contain spaces"
             />
           </div>
@@ -127,37 +158,78 @@ export default function RegisterPage() {
             />
           </div>
 
-          <div>
+          <div className="relative">
             <label htmlFor="password" className="block mb-1 font-bold">
               Password
             </label>
             <input
               id="password"
-              type="password"
+              type={showPassword ? "text" : "password"}
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={handlePasswordChange}
               required
               className="w-full mc-input"
-              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$"
-              title="Password must be at least 6 characters long and include at least one uppercase letter, one lowercase letter, and one digit."
             />
+            <button 
+              type="button" 
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-2 top-9 text-xs"
+            >
+              {showPassword ? "Hide" : "Show"}
+            </button>
+            <div className="mt-2 text-xs">
+              <p>Password must contain:</p>
+              <ul className="list-disc pl-5">
+                <li className={passwordRequirements.length ? "text-green-500" : "text-red-500"}>
+                  At least 8 characters
+                </li>
+                <li className={passwordRequirements.uppercase ? "text-green-500" : "text-red-500"}>
+                  One uppercase letter
+                </li>
+                <li className={passwordRequirements.lowercase ? "text-green-500" : "text-red-500"}>
+                  One lowercase letter
+                </li>
+                <li className={passwordRequirements.number ? "text-green-500" : "text-red-500"}>
+                  One number
+                </li>
+                <li className={passwordRequirements.specialChar ? "text-green-500" : "text-red-500"}>
+                  One special character
+                </li>
+              </ul>
+            </div>
           </div>
 
-          <div>
+          <div className="relative">
             <label htmlFor="confirmPassword" className="block mb-1 font-bold">
               Confirm Password
             </label>
             <input
               id="confirmPassword"
-              type="password"
+              type={showConfirmPassword ? "text" : "password"}
               value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              onChange={handleConfirmPasswordChange}
               required
               className="w-full mc-input"
             />
+            <button 
+              type="button" 
+              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              className="absolute right-2 top-9 text-xs"
+            >
+              {showConfirmPassword ? "Hide" : "Show"}
+            </button>
+            {confirmPassword && (
+              <div className={`mt-1 text-xs ${passwordRequirements.match ? "text-green-500" : "text-red-500"}`}>
+                {passwordRequirements.match ? "✓ Passwords match" : "✗ Passwords do not match"}
+              </div>
+            )}
           </div>
 
-          <button type="submit" disabled={isLoading} className="w-full mc-button-green">
+          <button 
+            type="submit" 
+            disabled={isLoading} 
+            className="w-full mc-button-green"
+          >
             {isLoading ? "Registering..." : "Register"}
           </button>
         </form>

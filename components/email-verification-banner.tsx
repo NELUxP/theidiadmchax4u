@@ -33,7 +33,7 @@ export function EmailVerificationBanner() {
   }
 
   return (
-    <div className="bg-yellow-500 border-b-2 border-black p-4">
+    <div className="minecraft-text bg-yellow-500 border-b-2 border-black p-4">
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
         <div>
           <p className="font-bold">Your email is not verified</p>

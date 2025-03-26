@@ -1,0 +1,87 @@
+{
+    "title": "DOWNLOADS",
+    "editions": [
+      {
+        "title": "PS4 Edition",
+        "description": "Bypass for cross-platform functionality",
+        "imageUrl": "/goldhen.png",
+        "features": [
+          "Cross-platform play",
+          "Basic server access",
+          "Performance optimizations"
+        ],
+        "buttonText": "Download",
+        "changelogs": [
+          {
+            "date": "10-08-2024",
+            "version": "PS4 Patch v3.00",
+            "changes": [
+              "Initial release added bypass for Minecraft version 1.21.41",
+              "Added basic cross-platform functionality",
+              "Improved connection stability",
+              "Fixed minor bugs"
+            ]
+          },
+          {
+            "date": "05-08-2024",
+            "version": "PS4 Patch v2.50",
+            "changes": [
+              "Added new server types support",
+              "Fixed authentication issues",
+              "Improved loading times"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Windows Tool",
+        "description": "Remote code execution for PS4 Minecraft Bedrock",
+        "imageUrl": "/windows-11.png",
+        "features": [
+          "All Standard features",
+          "Cheat management",
+          "Advanced functionality",
+          "Priority updates",
+          "Dedicated support"
+        ],
+        "buttonText": "Download",
+        "changelogs": [
+          {
+            "date": "10-08-2024",
+            "version": "PS4 Patch v3.00",
+            "changes": [
+              "Initial release of Premium Edition",
+              "Added remote code execution",
+              "Enhanced UI interface",
+              "Improved connection reliability"
+            ]
+          },
+          {
+            "date": "01-08-2024",
+            "version": "PS4 Patch v2.20",
+            "changes": [
+              "Added new cheat codes",
+              "Fixed memory leaks",
+              "Improved performance"
+            ]
+          }
+        ]
+      }
+    ],
+    "installation": {
+      "title": "Installation Guide",
+      "steps": [
+        "Jailbreak your PS4 (firmware 11.00 or lower) using GoldHEN.",
+        "Inject PS4Debug payload.",
+        "Transfer GoldHEN patch via FTP to /data/GoldHEN/patches/xml",
+        "Enable the patch in GoldHEN settings.",
+        "Ensure Minecraft version matches patch compatibility.",
+        "Download and install the patch.",
+        "Enjoy cross-platform play!"
+      ],
+      "note": {
+        "title": "Important:",
+        "content": "Requires GoldHEN Cheat Manager. For MCHAX4U Tool, inject PS4Debug.bin first."
+      }
+    }
+  }

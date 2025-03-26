@@ -4,7 +4,7 @@ import { useAuth } from "@/components/auth-provider";
 import { ProtectedRoute } from "@/components/protected-route";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { supabase } from "@/lib/supabase";
+import  supabase  from "@/lib/supabase";
 import { Session } from "@supabase/supabase-js";
 
 export default function DashboardPage() {
@@ -44,6 +44,7 @@ export default function DashboardPage() {
   // Sign out function
   const signOut = async () => {
     await supabase.auth.signOut();
+    window.location.reload() 
     router.push("/login");
   };
 

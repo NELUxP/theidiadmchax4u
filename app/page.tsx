@@ -77,7 +77,7 @@ export default function Home() {
       <div className="w-full max-w-6xl border-4 border-[#4a3b2a] bg-[#4a3b2a] rounded-lg overflow-hidden shadow-lg">
         {/* Top bar like Minecraft inventory */}
         <div className="bg-[#8b6b4a] py-2 px-4 border-b-4 border-[#6d5a45] flex justify-between items-center">
-          <div className="text-yellow-100  text-xl tracking-wider">
+          <div className="text-yellow-100  text-2xl tracking-wider">
             {homeData.title}
           </div>
           <div className="flex space-x-2">
@@ -144,9 +144,9 @@ export default function Home() {
         </div>
 
         {/* Bottom bar */}
-        <div className="bg-[#8b6b4a] py-2 px-4 border-t-4 border-[#6d5a45] text-yellow-100 text-sm  flex justify-between">
+        <div className="minecraft-footer">
+          <span>PS4</span>
           <span>MCHAX4U v2.1.0</span>
-          <span>PS4 Minecraft Bedrock Edition 1.41.21</span>
         </div>
       </div>
     </div>

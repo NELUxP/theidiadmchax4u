@@ -42,7 +42,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="p-8 flex flex-col items-center justify-center min-h-[calc(100vh-120px)]">
+    <div className="minecraft-text p-8 flex flex-col items-center justify-center min-h-[calc(100vh-120px)]">
       <div className="w-full max-w-md mc-panel">
         <h1 className="text-2xl font-bold mb-6 text-center">Login</h1>
 

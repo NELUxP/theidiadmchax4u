@@ -6,94 +6,7 @@ import { Session } from "@supabase/supabase-js";
 import Image from "next/image";
 import { Download, ChevronDown, ChevronUp, GitCommit, Calendar, CheckCircle } from "lucide-react";
 import Link from "next/link";
-
-const downloadData = {
-  title: "DOWNLOADS",
-  editions: [
-    {
-      title: "PS4 Edition",
-      description: "Bypass for cross-platform functionality",
-      imageUrl: "/goldhen.png",
-      features: [
-        "Cross-platform play",
-        "Basic server access",
-        "Performance optimizations",
-      ],
-      buttonText: "Download",
-      changelogs: [
-        {
-          date: "10-08-2024",
-          version: "PS4 Patch v3.00",
-          changes: [
-            "Initial release added bypass for Minecraft version 1.21.41",
-            "Added basic cross-platform functionality",
-            "Improved connection stability",
-            "Fixed minor bugs",
-          ],
-        },
-        {
-          date: "05-08-2024",
-          version: "PS4 Patch v2.50",
-          changes: [
-            "Added new server types support",
-            "Fixed authentication issues",
-            "Improved loading times",
-          ],
-        },
-      ],
-    },
-    {
-      title: "Windows Tool",
-      description: "Remote code execution for PS4 Minecraft Bedrock",
-      imageUrl: "/windows-11.png",
-      features: [
-        "All Standard features",
-        "Cheat management",
-        "Advanced functionality",
-        "Priority updates",
-        "Dedicated support",
-      ],
-      buttonText: "Download",
-      changelogs: [
-        {
-          date: "10-08-2024",
-          version: "PS4 Patch v3.00",
-          changes: [
-            "Initial release of Premium Edition",
-            "Added remote code execution",
-            "Enhanced UI interface",
-            "Improved connection reliability",
-          ],
-        },
-        {
-          date: "01-08-2024",
-          version: "PS4 Patch v2.20",
-          changes: [
-            "Added new cheat codes",
-            "Fixed memory leaks",
-            "Improved performance",
-          ],
-        },
-      ],
-    },
-  ],
-  installation: {
-    title: "Installation Guide",
-    steps: [
-      "Jailbreak your PS4 (firmware 11.00 or lower) using GoldHEN",
-      "Inject PS4Debug payload",
-      "Transfer GoldHEN patch via FTP to /data/GoldHEN/patches/xml",
-      "Enable the patch in GoldHEN settings",
-      "Ensure Minecraft version matches patch compatibility",
-      "Download and install the patch",
-      "Enjoy cross-platform play!",
-    ],
-    note: {
-      title: "Important:",
-      content: "Requires GoldHEN Cheat Manager. For MCHAX4U Tool, inject PS4Debug.bin first.",
-    },
-  },
-};
+import downloadData from "@/data/download-data.json"; // Import the JSON file
 
 export default function DownloadPage() {
   const [session, setSession] = useState<Session | null>(null);
@@ -145,8 +58,8 @@ export default function DownloadPage() {
       <div className="w-full max-w-6xl border-4 border-[#4a3b2a] bg-[#4a3b2a] rounded-lg overflow-hidden shadow-lg">
         
         {/* Header */}
-        <div className="bg-[#8b6b4a] py-3 px-4 border-b-4 border-[#6d5a45] flex justify-between items-center">
-          <h1 className="text-yellow-100 font-minecraft text-xl md:text-2xl tracking-wider">
+        <div className="bg-[#8b6b4a] py-2 px-4 border-b-4 border-[#6d5a45] flex justify-between items-center">
+          <h1 className="text-yellow-100 text-2xl tracking-wider">
             {downloadData.title}
           </h1>
           <div className="flex space-x-2">
@@ -334,9 +247,9 @@ export default function DownloadPage() {
         </div>
 
         {/* Footer */}
-        <div className="bg-[#8b6b4a] py-2 px-4 border-t-4 border-[#6d5a45] text-yellow-100 text-xs md:text-sm font-minecraft flex flex-col md:flex-row justify-between items-center">
-          <span>MCHAX4U v2.1.0</span>
-          <span>© 2025 Minecraft PS4 Edition</span>
+        <div className="minecraft-footer">
+        <span>PS4</span>
+        <span>MCHAX4U v2.1.0</span>
         </div>
       </div>
     </div>

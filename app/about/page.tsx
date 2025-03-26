@@ -47,7 +47,7 @@ export default function About() {
         
         {/* Шапка как в инвентаре Minecraft */}
         <div className="minecraft-header">
-          <div className="minecraft-title">{aboutData.title}</div>
+          <div className="text-yellow-100 text-2xl tracking-wider">{aboutData.title}</div>
           <div className="minecraft-window-controls">
             <span className="minecraft-btn red"></span>
             <span className="minecraft-btn yellow"></span>
@@ -94,8 +94,8 @@ export default function About() {
 
         {/* Подвал */}
         <div className="minecraft-footer">
-          <span>MCHAX4U v2.1.0</span>
-          <span>© PS4 Minecraft Bedrock Edition 1.41.21</span>
+        <span>PS4</span>
+        <span>MCHAX4U v2.1.0</span>
         </div>
       </div>
     </div>

@@ -34,12 +34,12 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "MCHAX4U - PS4 Minecraft Cross-Platform Exploit & Hacks",
-    description: "Unlock the full potential of Minecraft on PS4 with MCHAX4U! Explore cross-platform exploits, hacks, and tools to enhance your gameplay experience.",
+    description: "Play Without Limits On Your Jailbroken PS4!",
     url: "https://mchax4u.netlify.app/", // Replace with your actual website URL
     siteName: "MCHAX4U",
     images: [
       {
-        url: "https://yourwebsite.com/og-image.png", // Replace with your actual OG image URL
+        url: "https://mchax4unew.netlify.app/favicon.png", // Replace with your actual OG image URL
         width: 1200,
         height: 630,
         alt: "MCHAX4U - PS4 Minecraft Cross-Platform Exploit & Hacks",
@@ -62,11 +62,11 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.png", // Replace with your actual favicon path
-    shortcut: "/favicon.png", // Replace with your actual favicon path
+    icon: "favicon.png", // Replace with your actual favicon path
+    shortcut: "favicon.png", // Replace with your actual favicon path
     other: {
       rel: "favicon.png",
-      url: "/favicon.png", // Replace with your actual custom icon path
+      url: "favicon.png", // Replace with your actual custom icon path
     },
   },
   manifest: "/site.webmanifest", // Replace with your actual manifest file path
@@ -142,5 +142,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-import "./globals.css";

@@ -21,7 +21,7 @@ const supabaseClient = createClient(supabaseUrl, supabaseAnonKey, {
   auth: {
     persistSession: true,
     autoRefreshToken: true,
-    detectSessionInUrl: true
+    detectSessionInUrl: true,
   }
 });
 
@@ -33,7 +33,7 @@ export const getServerSupabase = () => {
     {
       auth: {
         persistSession: false,
-        autoRefreshToken: false
+        autoRefreshToken: false,
       }
     }
   );
