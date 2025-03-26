@@ -1,47 +1,23 @@
-// lib/supabaseClient.ts
 import { createClient } from "@supabase/supabase-js";
 
-// Type-safe environment variables
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+// Safely get environment variables
+const getSupabaseUrl = () => {
+  if (typeof window !== 'undefined') {
+    return process.env.NEXT_PUBLIC_SUPABASE_URL || '';
+  }
+  return process.env.SUPABASE_URL || '';
+};
 
-// Throw clear error messages during build if env vars are missing
-if (!supabaseUrl || !supabaseKey) {
-  throw new Error(`
-    Supabase environment variables not set!
-    Please ensure the following are set in your Netlify environment:
-    - NEXT_PUBLIC_SUPABASE_URL
-    - NEXT_PUBLIC_SUPABASE_ANON_KEY
-    
-    If developing locally, add them to your .env.local file
-  `);
-}
+const getSupabaseKey = () => {
+  if (typeof window !== 'undefined') {
+    return process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
+  }
+  return process.env.SUPABASE_ANON_KEY || '';
+};
 
-// Create the Supabase client
-export const supabase = createClient(supabaseUrl, supabaseKey, {
+export const supabase = createClient(getSupabaseUrl(), getSupabaseKey(), {
   auth: {
-    // Recommended settings for Next.js
     persistSession: true,
-    autoRefreshToken: true,
-    detectSessionInUrl: true,
-  },
-  // Global headers example (optional)
-  global: {
-    headers: {
-      'X-Application-Name': 'MCHAX4U'
-    }
+    autoRefreshToken: true
   }
 });
-
-// Optional: Add a helper function for server-side usage
-export const getServerSupabase = (accessToken?: string) => {
-  if (!accessToken) return supabase;
-  
-  return createClient(supabaseUrl, supabaseKey, {
-    global: {
-      headers: {
-        Authorization: `Bearer ${accessToken}`
-      }
-    }
-  });
-};
